@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio Sprint - SENAI</title>
+  </head>
+  <body>
+    <h1>Desafio Sprint Senai</h1>
+    <p class="necessaryConsumption"></p>
+    <p class="minValue"></p>
+    <p class="averagePrice"></p>
+    <p class="dailyExpense"></p>
+
+    <script>
+      let consumption;
+      let lowValue;
+      /**
+       * @param {HTMLElement} className
+       * @param {string} text
+       */
+      function displayTextOnScreen(className, text) {
+        let a = document.querySelector(className);
+        a.textContent = text;
+      }
+
+      function necessaryConsumption() {
+        let distanceTraveled = parseFloat(prompt('Qual a distância percorrida da sua casa até seu trabalho(em Km)?'));
+        let averageConsumption = parseFloat(prompt('Qual o consumo médio do seu veiculo (em Km/L)'));
+        consumption = distanceTraveled / averageConsumption;
+        displayTextOnScreen('.necessaryConsumption', `O consumo necessário é de ${consumption}`);
+      }
+
+      necessaryConsumption();
+
+      /**
+       * @param {Array} allPrices
+       */
+      function averagePrice(allPrices, posts) {
+        let initialValue = 0;
+        let sumAllValues = allPrices.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
+        let result = sumAllValues / posts;
+
+        displayTextOnScreen('.averagePrice', `A média de valores pesquisados é ${result.toFixed(2)}`);
+      }
+
+      function dailyExpense(necessaryConsumption, lowestValue) {
+        let expense = necessaryConsumption * lowValue * 2;
+        displayTextOnScreen('.dailyExpense', `O gasto diário (ida e  volta) é: R$${expense}`);
+      }
+
+      function minValue() {
+        let postsSearched = parseInt(prompt('Em quantos postos você pesquisou?'));
+        let values = [];
+        for (let i = 1; i <= postsSearched; i++) {
+          let valuesFound = prompt(`Qual o valor encontrado(em R$) no posto ${i}`);
+          let allValues = parseFloat(valuesFound);
+
+          if (isNaN(allValues)) {
+            alert('Insira um numero válido');
+            i--;
+          } else {
+            values.push(allValues);
+          }
+        }
+
+        if (values.length > 0) {
+          lowValue = Math.min(...values);
+          // console.log(lowValue);
+          displayTextOnScreen('.minValue', `O menor valor encontrado foi: R$ ${lowValue.toFixed(2)}`);
+          dailyExpense(consumption, lowValue);
+        }
+
+        averagePrice(values, postsSearched);
+      }
+
+      minValue();
+    </script>
+  </body>
+</html>
