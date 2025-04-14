@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solution version 2.0</title>
+  </head>
+  <body>
+    <script defer>
+      function challenge() {
+        /**
+         * @param {HTMLElement} className
+         */
+        function displayTextOnScreen(className, text) {
+          let tag = document.querySelector(className);
+          tag.textContent = text;
+        }
+        // calcula quantos litros são necessarios de um ponto a outro
+        let distanceTraveled = parseFloat(prompt(''));
+        let averageConsumption = parseFloat(prompt(''));
+        let necessaryConsumption = distanceTraveled / averageConsumption;
+        displayTextOnScreen('.necessaryConsumption', `O consumo necessário é ${necessaryConsumption}L`);
+        // encontrar o menor valor dos postos pesquisados
+        let positionsResearched = parseInt(prompt('Em quantos postos você pesquisou?'));
+        let postsValues;
+        let currentValue = 0;
+        let lowerValue = 0;
+        let sumOfValues;
+        let averageOfvalues;
+        for (let initialValue = 1; initialValue <= positionsResearched; initialValue++) {
+          postsValues = parseFloat(prompt(`Digite o valor encontrado (em R$) no posto ${initialValue}`));
+          console.log('valores: ', postsValues);
+          if (isNaN(postsValues)) {
+            alert('Digite um valor válido');
+            initialValue--;
+          }
+          // encontra a média do valor
+          sumOfValues += postsValues;
+          console.log('somando: ', sumOfValues);
+        }
+        if (postsValues > 0) {
+          currentValue = postsValues;
+        } else if (currentValue < postsValues) {
+          lowerValue = currentValue;
+          console.log('', lowerValue);
+        }
+
+        averageOfvalues = sumOfValues / positionsResearched;
+        displayTextOnScreen('.averageOfValues', `A média dos valores pesquisados é R$${averageOfvalues}`);
+
+        let dailyExpense = necessaryConsumption * lowerValue * 2;
+        displayTextOnScreen('.dailyExpense', `O gasto diário (ida e volta) é R$${dailyExpense}`);
+      }
+      challenge();
+    </script>
+  </body>
+</html>
