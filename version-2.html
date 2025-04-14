@@ -16,8 +16,8 @@
           tag.textContent = text;
         }
         // calcula quantos litros são necessarios de um ponto a outro
-        let distanceTraveled = parseFloat(prompt(''));
-        let averageConsumption = parseFloat(prompt(''));
+        let distanceTraveled = parseFloat(prompt('Qual a distância percorrida da sua casa até seu trabalho(em Km)?'));
+        let averageConsumption = parseFloat(prompt('Qual o consumo médio do seu veiculo (em Km/L)'));
         let necessaryConsumption = distanceTraveled / averageConsumption;
         displayTextOnScreen('.necessaryConsumption', `O consumo necessário é ${necessaryConsumption}L`);
         // encontrar o menor valor dos postos pesquisados
