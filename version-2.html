@@ -3,9 +3,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solution version 2.0</title>
+    <title>Disafio Sprint versão 2.0</title>
   </head>
   <body>
+    <h1>Desafio Sprint 2.0</h1>
+    <p class="necessaryConsumption"></p>
+    <p class="lowerValue"></p>
+    <p class="averageOfValues"></p>
+    <p class="dailyExpenses"></p>
     <script defer>
       /**
        * @param {HTMLElement} className
@@ -43,6 +48,7 @@
         } else if (currentValue < postsValues) {
           lowerValue = currentValue;
           console.log('', lowerValue);
+          displayTextOnScreen('.lowerValue', `O menor valor pesquisado é R$${lowerValue}`);
         }
 
         averageOfvalues = sumOfValues / positionsResearched;
