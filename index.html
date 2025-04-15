@@ -41,7 +41,7 @@
         let sumAllValues = allPrices.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
         let result = sumAllValues / posts;
 
-        displayTextOnScreen('.averagePrice', `A média de valores pesquisados é ${result.toFixed(2)}`);
+        displayTextOnScreen('.averagePrice', `A média de valores pesquisados é ${result}`);
       }
 
       function dailyExpense(necessaryConsumption, lowestValue) {
