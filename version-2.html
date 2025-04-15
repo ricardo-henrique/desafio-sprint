@@ -26,7 +26,7 @@
           // valores dos postos
           let postsValues = parseFloat(prompt(`Digite o valor encontrado (em R$) no posto ${initialValue}`));
 
-          while (Number.isNaN(postsValues) || postsValues <= 0) {
+          while (isNaN(postsValues) || postsValues <= 0) {
             postsValues = parseFloat(prompt(`Digite o valor encontrado (em R$) no posto ${initialValue}`));
           }
 
