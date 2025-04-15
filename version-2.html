@@ -22,15 +22,13 @@
         document.write('<br/>');
         // encontrar o menor valor dos postos pesquisados
         let positionsResearched = parseInt(prompt('Em quantos postos você pesquisou?'));
-        // let postsValues;
-        let currentValue = 0;
+
         let lowerValue = Infinity;
         let sumOfValues = 0;
         let averageOfvalues;
         for (let initialValue = 1; initialValue <= positionsResearched; initialValue++) {
           // valores dos postos
           let postsValues = parseFloat(prompt(`Digite o valor encontrado (em R$) no posto ${initialValue}`));
-          // console.log('valores: ', postsValues);
 
           while (Number.isNaN(postsValues) || postsValues <= 0) {
             postsValues = parseFloat(prompt(`Digite o valor encontrado (em R$) no posto ${initialValue}`));
@@ -41,26 +39,19 @@
             console.log('menor valor:', lowerValue);
           }
 
-          // if (lowerValue < postsValues || lowerValue > postsValues) {
-          //   currentValue = lowerValue;
-          //   console.log('teste: ', currentValue);
-          // }
-
-          // encontra a média do valor
           sumOfValues += postsValues;
-          // console.log('somando: ', sumOfValues);
         }
 
         document.write(`O menor valor pesquisado é R$${lowerValue}`);
         document.write('<br/>');
 
         averageOfvalues = sumOfValues / positionsResearched;
-        // displayTextOnScreen('.averageOfValues', `A média dos valores pesquisados é R$${averageOfvalues}`);
+
         document.write(`A média dos valores pesquisados é R$${averageOfvalues}`);
         document.write('<br/>');
 
         let dailyExpense = necessaryConsumption * lowerValue * 2;
-        // displayTextOnScreen('.dailyExpense', `O gasto diário (ida e volta) é R$${dailyExpense}`);
+
         document.write(`O gasto diário (ida e volta) é R$${dailyExpense}`);
       }
       challenge();
