@@ -4,18 +4,44 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Disafio Sprint</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .container {
+      }
+    </style>
   </head>
   <body>
-    <h1>Desafio Sprint</h1>
+    <div class="container">
+      <div class="titl">
+        <h1>Desafio Sprint</h1>
+      </div>
+      <p class="necessaryConsumption"></p>
+      <p class="lowerValue"></p>
+      <p class="average"></p>
+      <p class="dailyExpense"></p>
+    </div>
     <script defer>
+      /**
+       * @param{HTMLElement} className
+       * @param{string} text
+       */
+      function displayTextOnScreen(className, text) {
+        let field = document.querySelector(className);
+        field.textContent = text;
+      }
       function challenge() {
         // calcula quantos litros são necessarios de um ponto a outro
         let distanceTraveled = parseFloat(prompt('Qual a distância percorrida da sua casa até seu trabalho(em Km)?'));
         let averageConsumption = parseFloat(prompt('Qual o consumo médio do seu veiculo (em Km/L)'));
         let necessaryConsumption = distanceTraveled / averageConsumption;
-        // displayTextOnScreen('.necessaryConsumption', `O consumo necessário é ${necessaryConsumption}L`);
-        document.write(`O consumo necessário é ${necessaryConsumption}L`);
-        document.write('<br/>');
+        displayTextOnScreen('.necessaryConsumption', `O consumo necessário é ${necessaryConsumption}L`);
+        // document.write(`O consumo necessário é ${necessaryConsumption}L`);
+        // document.write('<br/>');
         // encontrar o menor valor dos postos pesquisados
         let positionsResearched = parseInt(prompt('Em quantos postos você pesquisou?'));
 
@@ -32,23 +58,26 @@
 
           if (postsValues < lowerValue) {
             lowerValue = postsValues;
-            console.log('menor valor:', lowerValue);
+            // console.log('menor valor:', lowerValue);
           }
 
           sumOfValues += postsValues;
         }
 
-        document.write(`O menor valor pesquisado é R$${lowerValue}`);
-        document.write('<br/>');
+        // document.write(`O menor valor pesquisado é R$${lowerValue}`);
+        // document.write('<br/>');
+        displayTextOnScreen('.lowerValue', `O menor valor pesquisado é R$${lowerValue}`);
 
         averageOfvalues = sumOfValues / positionsResearched;
 
-        document.write(`A média dos valores pesquisados é R$${averageOfvalues}`);
-        document.write('<br/>');
+        // document.write(`A média dos valores pesquisados é R$${averageOfvalues}`);
+        // document.write('<br/>');
+        displayTextOnScreen('.average', `O menor valor pesquisado é R$${averageOfvalues}`);
 
         let dailyExpense = necessaryConsumption * lowerValue * 2;
 
-        document.write(`O gasto diário (ida e volta) é R$${dailyExpense}`);
+        // document.write(`O gasto diário (ida e volta) é R$${dailyExpense}`);
+        displayTextOnScreen('.dailyExpense', `O gasto diário (ida e volta) é R$${dailyExpense}`);
       }
       challenge();
     </script>
